@@ -76,33 +76,36 @@ string infixToPrefix(string chk)
         }
         else if (chk[i] == '(')
         {
-            while (!st.empty() && st.Top() == ')')
+            while (!st.empty() && st.Top() != ')')
             {
                 result += st.pop();
             }
             if (!st.empty())
                 st.pop();
         }
-        else{
-            while(st.empty()&& (st.Top())>=precisionCalc(chk[i])){
-                result+=st.pop();
+        else
+        {
+            while (!st.empty() && precisionCalc(st.Top()) >= precisionCalc(chk[i]))
+            {
+                result += st.pop();
             }
             st.push(chk[i]);
         }
     }
-    while(!st.empty()){
-        result+=st.pop();
+    while (!st.empty())
+    {
+        result += st.pop();
     }
-    reverse(result.begin(),result.end());
+    reverse(result.begin(), result.end());
     return result;
 }
 
 int main()
-{   
-    string infix = "(7+ (4+5))-(2+0)";
+{
+    string infix = "(7+(4+5))-(2+0)";
 
-    string prefix ;
-    // prefix = infixToPrefix(infix);
-    cout<<prefix<<endl;
-    cout << prefixEvalution("-+7*45+20") << endl;
+    string prefix;
+    prefix = infixToPrefix(infix);
+    cout << prefix << endl;
+    // cout << prefixEvalution("-+7*45+20") << endl;
 }

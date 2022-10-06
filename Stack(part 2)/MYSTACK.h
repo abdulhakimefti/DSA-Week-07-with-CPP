@@ -71,12 +71,18 @@ public:
     int size(){
         return count;
     }
-    S Top(){
-        S chck;
-        if(top==NULL){
-            cout<<"There is no value"<<endl;
+    S Top()
+    {
+        S chk;
+        if (top == NULL)
+        {
+            cout << "There is no element" << endl;
+            chk;
         }
-       chck =top->val;
-       return chck;
+        else
+        {
+            chk = top->val;
+        }
+        return chk;
     }
 };
